@@ -60,7 +60,9 @@ Medium
 
 ## Explanation
 
+```
 To solve this problem we use the hashmap to maintain the atmost k size of hashmap
 if the size k excedes then again decrease to the k size then count the how many of elements are present in it.
 -Tc:O(n)
 -Sc:O(n)
+```
