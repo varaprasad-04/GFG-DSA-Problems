@@ -54,3 +54,5 @@ Explanation: Possible substrings are ["a", "a", "aa"]
 ## Difficulty
 
 Medium
+
+## This is same as exactly k sum subarray problem you can easily understand
