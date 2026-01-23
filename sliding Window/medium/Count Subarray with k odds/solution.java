@@ -5,8 +5,8 @@ SC: O(1)
 */
 
 
-
-class solution {
+import java.util.*;
+class Solution {
     static int noof(int[] arr,int k){
         int odd=0,l=0,r=0,n=arr.length,count=0,sum=0;
         while(r<n){
