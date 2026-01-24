@@ -62,7 +62,7 @@ To solve this problem we use **recursion**.
 ### Key Formula:
 
 ```
-josephus(n, k) = (josephus(n-1, k) + k) % n
+(start + k - 1) % current_number_of_elements
 ```
 
 Where:
