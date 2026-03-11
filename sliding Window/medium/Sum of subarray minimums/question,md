@@ -1,0 +1,189 @@
+# Sum of Subarray Minimums
+
+**Difficulty:** Medium | **Topics:** Arrays, Stack, Data Structures
+
+Given an array `arr[]` of positive integers, find the total sum of the minimum elements of every possible subarrays.
+
+**Note:** It is guaranteed that the total sum will fit within a 32-bit unsigned integer.
+
+## Examples
+
+### Example 1:
+
+```
+Input: arr[] = [10, 20]
+Output: 40
+```
+
+**Explanation:** Subarrays are [10], [20], [10, 20]. Minimums are 10, 20, 10.
+Sum of all these is 40.
+
+**Detailed Analysis:**
+
+- Subarray [10]: minimum = 10
+- Subarray [20]: minimum = 20
+- Subarray [10, 20]: minimum = 10
+- **Total sum:** 10 + 20 + 10 = 40
+
+### Example 2:
+
+```
+Input: arr[] = [1, 2, 3, 4]
+Output: 20
+```
+
+**Explanation:** Subarrays are [1], [2], [3], [4], [1, 2], [1, 2, 3], [1, 2, 3, 4], [2, 3], [2, 3, 4], [3, 4]. Minimums are 1, 2, 3, 4, 1, 1, 1, 2, 2, 3.
+Sum of all these is 20.
+
+**Detailed Analysis:**
+
+```
+Single elements:    [1], [2], [3], [4]           → minimums: 1, 2, 3, 4
+Length 2 subarrays: [1,2], [2,3], [3,4]         → minimums: 1, 2, 3
+Length 3 subarrays: [1,2,3], [2,3,4]            → minimums: 1, 2
+Length 4 subarrays: [1,2,3,4]                   → minimum: 1
+
+Total sum: 1+2+3+4 + 1+2+3 + 1+2 + 1 = 20
+```
+
+## Constraints:
+
+- 1 ≤ arr.size() ≤ 3 × 10^4
+- 1 ≤ arr[i] ≤ 10^3
+
+## Expected Complexities
+
+- **Time Complexity:** O(n)
+- **Auxiliary Space:** O(n)
+
+## Solution Approach
+
+### Key Insight:
+
+Instead of generating all subarrays (O(n²)), we can calculate the **contribution of each element** to the final sum. For each element, find how many subarrays have it as the minimum.
+
+### Algorithm:
+
+For each element `arr[i]`, calculate:
+
+1. **Left boundary:** How many elements to the left are ≥ arr[i]
+2. **Right boundary:** How many elements to the right are ≥ arr[i]
+3. **Contribution:** `arr[i] × (left_count + 1) × (right_count + 1)`
+
+### Using Monotonic Stack:
+
+#### **Step 1: Find Previous Smaller Element (PSE)**
+
+- For each element, find the nearest smaller element on the left
+- If no such element exists, consider index -1
+
+#### **Step 2: Find Next Smaller Element (NSE)**
+
+- For each element, find the nearest smaller element on the right
+- If no such element exists, consider index n
+
+#### **Step 3: Calculate Contribution**
+
+```
+For element at index i:
+left_range = i - PSE[i]
+right_range = NSE[i] - i
+contribution = arr[i] × left_range × right_range
+```
+
+### Step-by-Step Example:
+
+For `arr = [1, 2, 3, 4]`:
+
+```
+Element 1 (index 0):
+- PSE = -1, NSE = 4 (no smaller elements)
+- left_range = 0 - (-1) = 1
+- right_range = 4 - 0 = 4
+- contribution = 1 × 1 × 4 = 4
+
+Element 2 (index 1):
+- PSE = 0, NSE = 4
+- left_range = 1 - 0 = 1
+- right_range = 4 - 1 = 3
+- contribution = 2 × 1 × 3 = 6
+
+Element 3 (index 2):
+- PSE = 1, NSE = 4
+- left_range = 2 - 1 = 1
+- right_range = 4 - 2 = 2
+- contribution = 3 × 1 × 2 = 6
+
+Element 4 (index 3):
+- PSE = 2, NSE = 4
+- left_range = 3 - 2 = 1
+- right_range = 4 - 3 = 1
+- contribution = 4 × 1 × 1 = 4
+
+Total sum = 4 + 6 + 6 + 4 = 20
+```
+
+### Implementation Strategy:
+
+```java
+public int sumSubarrayMins(int[] arr) {
+    int n = arr.length;
+    int[] left = new int[n];   // Distance to previous smaller element
+    int[] right = new int[n];  // Distance to next smaller element
+
+    // Calculate left distances using stack
+    Stack<Integer> stack = new Stack<>();
+    for (int i = 0; i < n; i++) {
+        while (!stack.isEmpty() && arr[stack.peek()] >= arr[i]) {
+            stack.pop();
+        }
+        left[i] = stack.isEmpty() ? i + 1 : i - stack.peek();
+        stack.push(i);
+    }
+
+    // Calculate right distances using stack
+    stack.clear();
+    for (int i = n - 1; i >= 0; i--) {
+        while (!stack.isEmpty() && arr[stack.peek()] > arr[i]) {
+            stack.pop();
+        }
+        right[i] = stack.isEmpty() ? n - i : stack.peek() - i;
+        stack.push(i);
+    }
+
+    // Calculate total sum
+    long result = 0;
+    for (int i = 0; i < n; i++) {
+        result += (long) arr[i] * left[i] * right[i];
+    }
+
+    return (int) result;
+}
+```
+
+### Why This Works:
+
+- **Contribution counting:** Each element contributes to exactly those subarrays where it's the minimum
+- **Range calculation:** Left and right ranges determine the number of valid subarrays
+- **Monotonic stack:** Efficiently finds previous/next smaller elements in O(n) time
+
+## Company Tags
+
+- NPCI
+
+## Topic Tags
+
+- Arrays
+- Stack
+- Data Structures
+- Monotonic Stack
+
+## Problem Category
+
+- Array Problems
+- Stack Applications
+- Contribution Technique
+
+## Difficulty
+
+Medium
