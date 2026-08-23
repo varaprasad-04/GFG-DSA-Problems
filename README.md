@@ -19,6 +19,7 @@
 |  |
 | ------- |
 | [0038-count-and-say](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/0038-count-and-say) |
+| [1927-sum-game](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/1927-sum-game) |
 ## Hash Table
 |  |
 | ------- |
@@ -28,6 +29,7 @@
 |  |
 | ------- |
 | [1386-cinema-seat-allocation](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/1386-cinema-seat-allocation) |
+| [1927-sum-game](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/1927-sum-game) |
 ## Bit Manipulation
 |  |
 | ------- |
@@ -36,4 +38,12 @@
 |  |
 | ------- |
 | [3069-distribute-elements-into-two-arrays-i](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/3069-distribute-elements-into-two-arrays-i) |
+## Math
+|  |
+| ------- |
+| [1927-sum-game](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/1927-sum-game) |
+## Game Theory
+|  |
+| ------- |
+| [1927-sum-game](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/1927-sum-game) |
 <!---LeetCode Topics End-->
