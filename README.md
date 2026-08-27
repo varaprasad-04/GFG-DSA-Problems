@@ -7,6 +7,7 @@
 ## Array
 |  |
 | ------- |
+| [0015-3sum](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/0015-3sum) |
 | [0198-house-robber](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/0198-house-robber) |
 | [1386-cinema-seat-allocation](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/1386-cinema-seat-allocation) |
 | [3069-distribute-elements-into-two-arrays-i](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/3069-distribute-elements-into-two-arrays-i) |
@@ -46,4 +47,12 @@
 |  |
 | ------- |
 | [1927-sum-game](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/1927-sum-game) |
+## Two Pointers
+|  |
+| ------- |
+| [0015-3sum](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/0015-3sum) |
+## Sorting
+|  |
+| ------- |
+| [0015-3sum](https://github.com/varaprasad-04/LeetCode-GFG-DSA-Problems/tree/master/0015-3sum) |
 <!---LeetCode Topics End-->
